@@ -32,8 +32,8 @@ public class MainActivity extends Activity {
 	
 	private void setupMessageButton(){
 		Button messageButton = (Button) findViewById(R.id.button1);
-		checkFalse = (CheckBox) findViewById(R.id.checkBox1);
-		checkTrue = (CheckBox) findViewById(R.id.checkBox2);
+		checkFalse = (CheckBox) findViewById(R.id.checkBox2);
+		checkTrue = (CheckBox) findViewById(R.id.checkBox1);
 		
 		messageButton.setOnClickListener(new View.OnClickListener() {
 			
