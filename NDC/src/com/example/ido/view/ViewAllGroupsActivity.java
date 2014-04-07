@@ -53,6 +53,7 @@ public class ViewAllGroupsActivity extends GeneralActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_view_groups);
+		//Function called to create set up a button
 		setupMessageButton();
 
 		};
@@ -60,34 +61,49 @@ public class ViewAllGroupsActivity extends GeneralActivity {
 
 		
 		private void setupMessageButton(){
-			RelativeLayout rada = (RelativeLayout)findViewById(R.id.relativeLayout);
+			//get ID of the button we're working with
+			Button messageButton = (Button) findViewById(R.id.button1);
 			
-			
-			rada.setOnClickListener(new View.OnClickListener() {
+			//sets up an on click listener which will give the button attributes
+			messageButton.setOnClickListener(new View.OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
+					//increase count
 					count++;
+					
 					Handler handler = new Handler();
+					
+					//runnable set up to hold code which will fun after the handler
 					Runnable r = new Runnable() {
 						
 						@Override
 						public void run() {
 							if (count == 1)
 							{
+								//Writes a one into the xml file
 								xmlFormater(1);
+								//toast to show confirmation of choice
 								Toast.makeText(getApplicationContext(), "Yes", Toast.LENGTH_SHORT).show();
+								//resets count
 								count = 0;
 							}
 						}
 					};
+					//if user clicks once
 					if(count == 1){
+						//delay set up to check if user clicks twice within .25 seconds
 						handler.postDelayed(r, 250);
 						
 						
-					}else if (count == 2){
+					}
+					//if user clicks twice
+					else if (count == 2){
+						//Writes a two into the xml file
 						xmlFormater(2);
+						//toast to show confirmation of choice
 						Toast.makeText(getApplicationContext(), "No", Toast.LENGTH_SHORT).show();
+						//resets count
 						count = 0;
 					}
 
