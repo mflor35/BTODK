@@ -28,6 +28,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.RadioButton;
+import android.widget.RelativeLayout;
 import android.widget.SimpleCursorAdapter;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.TextView;
@@ -59,10 +60,10 @@ public class ViewAllGroupsActivity extends GeneralActivity {
 
 		
 		private void setupMessageButton(){
+			RelativeLayout rada = (RelativeLayout)findViewById(R.id.relativeLayout);
 			
-			Button messageButton = (Button) findViewById(R.id.button1);
 			
-			messageButton.setOnClickListener(new View.OnClickListener() {
+			rada.setOnClickListener(new View.OnClickListener() {
 
 				@Override
 				public void onClick(View v) {
