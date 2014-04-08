@@ -111,7 +111,7 @@ public class ViewAllGroupsActivity extends GeneralActivity {
 			});
 		}
 		
-		/* Checks if external storage is available for read and write */
+		//Checks if external storage is available for read and write
 		public boolean isExternalStorageWritable() {
 		    String state = Environment.getExternalStorageState();
 		    if (Environment.MEDIA_MOUNTED.equals(state)) {
@@ -121,27 +121,42 @@ public class ViewAllGroupsActivity extends GeneralActivity {
 		}
 		
 		void fileWriter(String instance){
-			//Log.d("Elias", "entered filewriter");
 		
-				
+				// Format of date
 				SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyyy-mm-dd hh:mm:ss");
+				
+				// Create a new date object 
 				Date date = new Date();
+				
+				// Get the daate and format it 
 				String dateFormatted = DATE_FORMAT.format(date);
+				
+				// Get the path/directory of the external storage
 				String root = Environment.getExternalStorageDirectory().toString();
+				
+				// Path/directory where we want to save the file
 				File fileDir = new File(root + "/odk/instances");
+				
+				// Make the directory if it does not exist
 				fileDir.mkdirs();
+				
+				// Name of the file with the date formated and the file extension
 				String fileName = "form" + dateFormatted + ".xml";
+				
+				// Create a new File object with the directory specified in fileDir and the name in fileName
 				File file = new File(fileDir,fileName);
 				
+				// Check to avoid duplicate files
 				if(file.exists())
 				{
+				
 					file.delete();
 				}
 				try
-				{
+				{	
+					// Write the file to the SD card on the phone
 					FileOutputStream out = new FileOutputStream(file);
 					out.write(instance.getBytes());
-					//Log.d("Miguel","Succes: " + getFilesDir());
 					out.close();
 				}
 				catch(Exception e)
